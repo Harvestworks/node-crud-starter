@@ -1,0 +1,37 @@
+{
+  "name": "crud-starter",
+  "version": "0.0.1",
+  "description": "quick start CRUD API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harvestworks/node-crud-starter.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "crud",
+    "rest",
+    "api",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "Michael Sperone",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Harvestworks/node-crud-starter/issues"
+  },
+  "homepage": "https://github.com/Harvestworks/node-crud-starter#readme",
+  "devDependencies": {
+    "express-restify-mongoose": "^4.0.0",
+    "mongoose": "^4.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "method-override": "^2.3.9"
+  }
+}
