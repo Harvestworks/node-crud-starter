@@ -1,3 +1,3 @@
 module.exports = {
-    modelName: "Customer"
+    modelName: "Default"
 };
