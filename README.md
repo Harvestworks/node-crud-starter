@@ -47,4 +47,9 @@ In a separate Terminal window or tab:
 `mongod`
 
 ### Start the server
-`node app.js`
+`npm start`
+
+### Setup a new database
+`node setup/new-model.js`
+
+... and follow the prompts
