@@ -10,10 +10,14 @@ const config = require('./config');
 const model = require('./Models/' + config.modelName + 'Model');
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(express.static('public'));
 
 mongoose.connect('mongodb://localhost:27017/database');
 
 restify.serve(router, mongoose.model(config.modelName, model)); 
+router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+});
 
 app.use(router);
 
