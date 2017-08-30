@@ -1,4 +1,4 @@
-(function() {
+function fillTable(dbname, colNames) {
     
     const url = "/api/v1/" + dbname;
 
@@ -12,7 +12,6 @@
     }
 
     $.getJSON(url, function(data) {
-
         let table = "";
         data.forEach(function(r) {
             table += createRow(r);
@@ -20,4 +19,4 @@
         $("#data").append(table);
     });
 
-})();
+}
