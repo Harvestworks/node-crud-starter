@@ -6,6 +6,9 @@
     const dbname = "Default";
     const colNames = ["Name", "Date", "Fact", "Other Thing"];
 
+    // const config = require('../config.js');
+    // const dbname = config.modelName;
+    // const colNames = config.columnNames;
     /*   *   *   *   *   *   *   */
     
     $("#title").text(dbname);

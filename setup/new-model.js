@@ -2,8 +2,9 @@ let interactiveScript = require('interactive-script');
 let colors = require('colors');
 let fs = require('fs');
 let path = require('path');
+
+let columnNames = [];
 let schema = {}; 
-let schemaPath = path.join(__dirname + "/../Models/");
 
 interactiveScript (async (say, ask) => {
 
@@ -36,6 +37,7 @@ interactiveScript (async (say, ask) => {
             }
             return valid;
         });
+        columnNames.push(column);
         let datatype = await getValue("Please enter the data type for this column (String, Number, Date, Buffer, Boolean, Mixed, Objectid, Array) >", (x) => {
             const valid = ["String","Number","Date","Buffer","Boolean", "Mixed", "Objectid", "Array"].includes(x);
             if (!valid) {
@@ -60,14 +62,26 @@ interactiveScript (async (say, ask) => {
     say("Your database has the following column names:");
     say(JSON.stringify(schema));
     conf = await ask("Is this correct? (Y|n)");
+
+    // Write Files
     if (confirmThis(conf, false)) {
-        say("writing database schemai...".green);
-        let file = "const mongoose = require('mongoose');\n"
-                + "module.exports = new mongoose.Schema("
-                + JSON.stringify(schema) + ");";
+        say("creating database schema...".green);
+        const schemaPath = path.join(__dirname + "/../Models/");
+        const file = "const mongoose = require('mongoose');\n" +
+                    "module.exports = new mongoose.Schema(" +
+                    JSON.stringify(schema).replace(/\"/g, "") + "\n" +
+                    ");";
         fs.writeFileSync(schemaPath + dbname + "Model.js", file);
         say("database created");
-        say("please update database name in config.js");
+
+        say("setting config variables".green);
+        const configPath = path.join(__dirname + "/../config.js");
+        const configContents = "module.exports ={\n" +
+            "    modelName: '" + dbname + "',\n" +
+            "    columnNames: '" + columnNames.toString() + "'\n" +
+            "};";
+        fs.writeFileSync(configPath, configContents);
+        say("complete!!".rainbow);
     } else {
         say("uh oh!  Please start over");
     }

@@ -1,3 +1,4 @@
-module.exports = {
-    modelName: "Default"
+module.exports ={
+    modelName: 'Default',
+    columnNames: 'name,type,description,info'
 };

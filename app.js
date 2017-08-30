@@ -14,6 +14,9 @@ app.use(express.static('public'));
 
 mongoose.connect('mongodb://localhost:27017/database');
 
+console.log("model: ", model);
+console.log("modelName: ", config.modelName);
+
 restify.serve(router, mongoose.model(config.modelName, model)); 
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public/index.html"));
