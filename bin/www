@@ -6,20 +6,19 @@ const restify = require('express-restify-mongoose');
 const app = express();
 const router = express.Router();
 
-const config = require('./config');
-const model = require('./Models/' + config.modelName + 'Model');
+const config = require('../config');
+const model = require('../Models/' + config.modelName + 'Model');
+
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static('public'));
+app.set('view engine', 'pug');
 
 mongoose.connect('mongodb://localhost:27017/database');
 
-console.log("model: ", model);
-console.log("modelName: ", config.modelName);
-
 restify.serve(router, mongoose.model(config.modelName, model)); 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+    res.render("../index", config);
 });
 
 app.use(router);

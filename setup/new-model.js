@@ -26,6 +26,7 @@ interactiveScript (async (say, ask) => {
         getDBName = !confirmThis(conf, false);
     }
 
+    dbname = dbname.replace(/\ /g, "_");
     let doYouWantToAddAnotherColumn = true;
     let columnCount = 1;
     while (doYouWantToAddAnotherColumn) {
@@ -78,8 +79,7 @@ interactiveScript (async (say, ask) => {
         const configPath = path.join(__dirname + "/../config.js");
         const configContents = "module.exports ={\n" +
             "    modelName: '" + dbname + "',\n" +
-            "    columnNames: '" + columnNames.toString() + "'\n" +
-            "};";
+            "    columnNames: " + JSON.stringify(columnNames) + "\n" + "};";
         fs.writeFileSync(configPath, configContents);
         say("complete!!".rainbow);
     } else {

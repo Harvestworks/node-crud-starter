@@ -1,4 +1,4 @@
 module.exports ={
-    modelName: 'Default',
-    columnNames: 'name,type,description,info'
+    modelName: 'Funny Names',
+    columnNames: ["name","funny","wacky","value"]
 };
