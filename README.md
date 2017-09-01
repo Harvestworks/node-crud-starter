@@ -8,10 +8,17 @@ This project is all in javascript, using node.js with express and mongoose.  Thi
 This assumes you have a mac and the following installed on your computer:
 * [node.js](https://nodejs.org/en/)
 * [mongodb](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+* [git](https://git-scm.com/)
 
-All commands to be entered in a Mac Terminal window.
+All commands to be entered in a Mac or Linux Terminal window.
 
-If you do not have a mac, the commands are very similar, if not the same.  Instructions for your OS should be readily available online.
+To confirm you have the above installed, type these commands in a terminal window:
+`node --version`
+`npm --version`
+`git --version`
+`mongodb --version`
+
+If you do not have Mac or Linux, the commands should be similar or the same in Windows command prompts... if a command doesn't work, a google search should return the appropriate one for you.  Or create an issue or send a message and I can help!
 
 #### Clone this repository
 `git clone https://github.com/Harvestworks/node-crud-starter.git <your_project_name>`
